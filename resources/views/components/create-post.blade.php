@@ -4,61 +4,13 @@
             {{ session('status') }}
         </div>
     @endif
-    <form method="post" action="{{route('sent-email','$development->agency->id')}}">
+    <form method="post" action="{{route('facebook.groupPost',$page->page_id)}}">
         @csrf
 
-        <div class="row ">
+        <div class="row p-4 ">
 
-            <h3 class="pt-4 ">Send Email</h3>
-            <div class=" col-md-12 mt-3 ">
+            <h3 class=" ">Create Your Post {{ $page->name}}</h3>
 
-                <label for="name" class="form-label mb-1">
-                    Your Name*</label
-                >
-                <input
-                    id="name"
-                    type="text"
-                    class="form-control name"
-                    name="name"
-                    value=""
-                    required
-                />
-                @error('name')
-                <div class="alert alert-danger mt-1 p-2">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class=" col-md-12">
-                <label for="surname" class="form-label mb-1 pt-4">
-                    Email Address*</label
-                >
-                <input
-                    id="email"
-                    type="email"
-                    class="form-control surname"
-                    name="email"
-                    value=""
-                    required
-                />
-                @error('email')
-                <div class="alert alert-danger mt-1 p-2">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class=" col-md-12">
-                <label for="phoneNumber" class="form-label mb-1 pt-4">
-                    Phone Number*</label
-                >
-                <input
-                    id="phone"
-                    type="text"
-                    class="form-control phoneNumber"
-                    name="phone"
-                    value=""
-                    required
-                />
-                @error('phone')
-                <div class="alert alert-danger mt-1 p-2">{{ $message }}</div>
-                @enderror
-            </div>
 
             <div class="col-12">
                 <label for="email-message" class="form-label mb-1 pt-4"
@@ -76,8 +28,24 @@
                 <div class="alert alert-danger mt-1 p-2">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="col-12">
+                <label for="email-message" class="form-label mb-1 pt-4"
+                >Link*</label
+                >
+                <input
+                    id="link"
+                    class="form-control message"
+                    name="link"
+
+                    required
+                >
+                    </input>
+                @error('link')
+                <div class="alert alert-danger mt-1 p-2">{{ $link }}</div>
+                @enderror
+            </div>
         </div>
-        <div class="col-12 my-3">
+        <div class="col-12 my-3 ps-4 pe-4">
             <button
 
                 id="sendRequestBtn"
@@ -85,7 +53,7 @@
                 type="submit"
             >
                     <span id="sendText">
-                      SEND EMAIL
+                      POST
                     </span>
 
             </button>
